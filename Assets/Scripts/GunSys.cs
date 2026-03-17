@@ -6,10 +6,10 @@ public class GunSys : MonoBehaviour
 {
     //Gun stats
     public int damage;
-    public float timeBetweenShots, spread, range, reloadTime, timeBetweenShooting;
+    //public float timeBetweenShots, spread, range, reloadTime, timeBetweenShooting;
     public int magazineSize, bulletsPerTap;
     public bool allowButtonHold;
-    int bulletsLeft, BulletsShot;
+    int bulletsLeft, BulletsShot=0;
 
     //bools
     bool Shooting, readyToshoot, reloading;
@@ -24,8 +24,38 @@ public class GunSys : MonoBehaviour
     GameObject impact;
     void Update()
     {
-        //system for if player clicks left mouse, player will pull trigger and hit/miss something
+        //press R to reload
+        if (Keyboard.current.rKey.wasPressedThisFrame)
+        {
+            reload();
+        }
+
+        //checks to see if player has shot all of their bullets. If so, gun will not shoot until player reloads 
         if(Mouse.current.leftButton.wasPressedThisFrame){
+            Shooting = true;
+        }
+        else if (Mouse.current.leftButton.wasReleasedThisFrame)
+         {
+            Shooting = false;
+        }
+        if (Shooting)
+        {
+            if(BulletsShot >= magazineSize)
+            {
+                Debug.Log("reload!");
+            }
+            else{
+            Shoot();
+            BulletsShot += 1;
+            }
+        }
+        
+        
+    }
+
+    private void Shoot()
+    {
+        //method for activating raycast to shoot
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hitInfo, 20f))
         {
             Debug.Log("Hit");
@@ -42,6 +72,11 @@ public class GunSys : MonoBehaviour
             Debug.Log("Miss");
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward)*20f, Color.green);
         }
-        }
+        
+    }
+
+    private void reload()
+    {
+        BulletsShot = 0;
     }
 }

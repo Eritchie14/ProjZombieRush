@@ -16,12 +16,16 @@ public class GunSys : MonoBehaviour
 
     //References
     //public Camera fpsCam;
-    // public Transform attackpoint;
+     public Transform attackpoint;
     //public RaycastHit rayHit;
     //public LayerMask WhatIsEnemy;
 
     public GameObject ImpactParticle;
+    public GameObject muzzleFlashParticle;
     GameObject impact;
+    public GameObject firePoint;
+    public float fireRate = 0.5f;
+    private float nextFireTime = 0f;
     void Update()
     {
         //press R to reload
@@ -38,15 +42,17 @@ public class GunSys : MonoBehaviour
          {
             Shooting = false;
         }
-        if (Shooting)
+        //checks to see if player should be shooting and how fast to shoot
+        if (Shooting && Time.time > nextFireTime)
         {
             if(BulletsShot >= magazineSize)
             {
                 Debug.Log("reload!");
             }
             else{
-            Shoot();
-            BulletsShot += 1;
+                Shoot();
+                nextFireTime = Time.time + fireRate;
+                BulletsShot += 1;
             }
         }
         
@@ -65,6 +71,11 @@ public class GunSys : MonoBehaviour
             impact = Instantiate(ImpactParticle, hitInfo.point, quaternion.identity);
             Destroy(impact, 2f);
             impact = null;
+
+            //TODO: Needs fixing, Muzzle flash is lagging behind attack point. needs to move with the attack point 
+            //  firePoint = Instantiate(muzzleFlashParticle, attackpoint.position, quaternion.identity);
+            //  Destroy(firePoint, 0.2f);
+            //  firePoint = null;
 
         }
         else

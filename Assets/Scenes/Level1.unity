@@ -773,6 +773,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1147331801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 75dcb58506746b84db987c4ce01e99b5, type: 3}
+  m_PrefabInstance: {fileID: 1215119112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1147331802 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 75dcb58506746b84db987c4ce01e99b5, type: 3}
+  m_PrefabInstance: {fileID: 1215119112}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1215119112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -803,7 +813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 75dcb58506746b84db987c4ce01e99b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.33
+      value: 0.33000004
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 75dcb58506746b84db987c4ce01e99b5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -811,7 +821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 75dcb58506746b84db987c4ce01e99b5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.51
+      value: 0.5100002
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 75dcb58506746b84db987c4ce01e99b5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -819,7 +829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 75dcb58506746b84db987c4ce01e99b5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 75dcb58506746b84db987c4ce01e99b5, type: 3}
       propertyPath: m_LocalRotation.y
@@ -827,7 +837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 75dcb58506746b84db987c4ce01e99b5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 75dcb58506746b84db987c4ce01e99b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1238,15 +1248,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunSys
   damage: 0
-  timeBetweenShots: 0
-  spread: 0
-  range: 0
-  reloadTime: 0
-  timeBetweenShooting: 0
-  magazineSize: 0
+  magazineSize: 15
   bulletsPerTap: 0
   allowButtonHold: 0
+  attackpoint: {fileID: 1147331802}
   ImpactParticle: {fileID: 100014, guid: 5332791ebce075d4a9e56f4581e7fb47, type: 3}
+  muzzleFlashParticle: {fileID: 100000, guid: 8eaaa4f553116f44b8459bc24201c514, type: 3}
+  firePoint: {fileID: 1147331801}
+  fireRate: 0.15
 --- !u!1 &1912885612
 GameObject:
   m_ObjectHideFlags: 0

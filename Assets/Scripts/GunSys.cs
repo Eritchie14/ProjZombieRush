@@ -1,3 +1,4 @@
+using TMPro.EditorUtilities;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,17 +7,15 @@ public class GunSys : MonoBehaviour
 {
     //Gun stats
     public int damage;
-    //public float timeBetweenShots, spread, range, reloadTime, timeBetweenShooting;
-    public int magazineSize, bulletsPerTap;
-    public bool allowButtonHold;
-    int bulletsLeft, BulletsShot=0;
+    public int magazineSize, bulletsPerTap, numClips;
+    int BulletsShot=0; int bulletsLeft=0;
 
     //bools
-    bool Shooting, readyToshoot, reloading;
+    bool Shooting;
 
     //References
-    //public Camera fpsCam;
      public Transform attackpoint;
+     public Hud hud;
     //public RaycastHit rayHit;
     //public LayerMask WhatIsEnemy;
 
@@ -26,12 +25,26 @@ public class GunSys : MonoBehaviour
     public GameObject firePoint;
     public float fireRate = 0.5f;
     private float nextFireTime = 0f;
+    void Start()
+    {
+        bulletsLeft = magazineSize;
+        hud.updateAmmo(bulletsLeft, numClips);
+    }
     void Update()
     {
         //press R to reload
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
+            if(numClips > 0 && bulletsLeft != magazineSize){
             reload();
+            bulletsLeft = magazineSize;
+            numClips -= 1;
+            hud.updateAmmo(bulletsLeft, numClips);
+            }
+            else
+            {
+                Debug.Log("no more ammo!");
+            }
         }
 
         //checks to see if player has shot all of their bullets. If so, gun will not shoot until player reloads 
@@ -53,6 +66,9 @@ public class GunSys : MonoBehaviour
                 Shoot();
                 nextFireTime = Time.time + fireRate;
                 BulletsShot += 1;
+                bulletsLeft -= 1;
+                //hud update
+                hud.updateAmmo(bulletsLeft, numClips);
             }
         }
         

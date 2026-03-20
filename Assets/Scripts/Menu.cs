@@ -8,10 +8,20 @@ public class Menu : MonoBehaviour
     public void playGame()
     {
         SceneManager.LoadScene(ScenetoLoad);
+        Time.timeScale = 1;
     }
 
     public void exitGame()
     {
         Application.Quit();
+    }
+    public void goToScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
+    public void restartGame()
+    {
+        SceneManager.LoadScene("level1");
+        Time.timeScale = 1;
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class HealthSys : MonoBehaviour
 {
     public float maxHealth;
-    float CurrentHealth;
+    public float CurrentHealth;
     public float damage;
     bool playerDead;
 
@@ -23,15 +23,26 @@ public class HealthSys : MonoBehaviour
         //what happens when player gets damaged
         if (Keyboard.current.hKey.wasPressedThisFrame)
         {
-            CurrentHealth -= damage;
+            DamagePlayer(damage);
+        }
+        
+    }
+
+    public void DamagePlayer(float power)
+    {
+        CurrentHealth -= power;
             CurrentHealth = Mathf.Clamp(CurrentHealth, 0, maxHealth);
             hud.updateHealth(CurrentHealth/maxHealth);
             if(CurrentHealth <= 0)
             {
+                playerDead = true;
                 hud.PlayerDeath();
             }
-        }
-        
+    }
+
+    public bool isDead()
+    {
+        return playerDead;
     }
 
 }

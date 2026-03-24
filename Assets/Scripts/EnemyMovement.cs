@@ -10,20 +10,30 @@ public class EnemyMovement : MonoBehaviour
 
     private NavMeshAgent thisEnemy;
     private Transform playerPos;
+    private GameObject player;
+    private HealthSys playerHealth;
 
     private bool attacking; //is enemy currently attacking 
     private bool isDead;//is the player dead
+    public float attackdamage = 10;
 
     private void Start()
     {
-        thisEnemy.GetComponent<NavMeshAgent>(); //enemy AI brain, this is what allows enemy to path
+        thisEnemy = GetComponent<NavMeshAgent>(); //enemy AI brain, this is what allows enemy to path
         playerPos = FindFirstObjectByType<HealthSys>().transform; //detect first object on scene that contains a healthSys compentent (script) and stores value
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerHealth = player.transform.Find("HealthSystem").GetComponent<HealthSys>();
+        Debug.Log("Player Position" + playerPos.position);
     }
 
     private void Update()
     {
         float distanceFromPlayer = Vector3.Distance(playerPos.position, this.transform.position); // distance between player and enemy 
-
+        if (playerHealth.isDead())
+        {
+            thisEnemy.isStopped = true;
+            attacking = false;
+        }
         if(distanceFromPlayer <= sightRange && distanceFromPlayer > attackRange)
         {
             attacking = false;
@@ -36,7 +46,7 @@ public class EnemyMovement : MonoBehaviour
         {
             thisEnemy.isStopped = true; // enemy stops moving to attack
             StartCoroutine(AttackPlayer()); // enemy starts attacking player
-        }Debug.Log("Running Update");
+        }
     }
 
     private void chasePlayer()
@@ -48,7 +58,10 @@ public class EnemyMovement : MonoBehaviour
     {
         attacking = true;
         yield return new WaitForSeconds(timeBetweenAtacks); //wait for time between attacks
-        Debug.Log("hurtplayer");
+        playerHealth.DamagePlayer(attackdamage);
+        Debug.Log(playerHealth.CurrentHealth);
+        Debug.Log("hurtplayer: " + player.name);
+        
         attacking = false;
     }
 

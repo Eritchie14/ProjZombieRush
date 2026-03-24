@@ -8,7 +8,7 @@ public class Hud : MonoBehaviour
 {
     
     public string clipSize = "0/0";
-    bool empty = true;
+    //bool empty = true;
     //public int ammo = 0;
 
     public TextMeshProUGUI Ammo;

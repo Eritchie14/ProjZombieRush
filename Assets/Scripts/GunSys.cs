@@ -1,5 +1,4 @@
 //using TMPro.EditorUtilities;
-using Ilumisoft.HealthSystem;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -65,6 +64,7 @@ public class GunSys : MonoBehaviour
             }
             else{
                 Shoot();
+                AudioManager.Instance.Play(AudioManager.SoundType.Shoot);
                 nextFireTime = Time.time + fireRate;
                 BulletsShot += 1;
                 bulletsLeft -= 1;

@@ -1,5 +1,3 @@
-using Ilumisoft.HealthSystem.UI;
-//using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

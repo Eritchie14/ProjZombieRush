@@ -65,6 +65,10 @@ public class Enemy : MonoBehaviour
         playerHealth.DamagePlayer(attackdamage);
         Debug.Log(playerHealth.CurrentHealth);
         Debug.Log("hurtplayer: " + player.name);
+
+        System.Random rand = new System.Random();
+        int index = rand.Next(AudioManager.Instance.EnemyAttackSounds.Length);
+        AudioManager.Instance.PlayAttack(index);
         
         attacking = false;
     }

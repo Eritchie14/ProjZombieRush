@@ -84,8 +84,20 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("index out of bounds");
             return;
         }
-        else
-        {
+        var sound = EnemyAttackSounds[index];
+
+    if (sound == null)
+    {
+        Debug.LogWarning($"Sound is NULL at index {index}");
+        return;
+    }
+
+    if (sound.Clip == null)
+    {
+        Debug.LogWarning($"Clip is NULL at index {index}");
+        return;
+    }
+        
             //Creates a new sound object
         var soundObj = new GameObject($"Sound_{index}");
         var audioSrc = soundObj.AddComponent<AudioSource>();
@@ -99,7 +111,7 @@ public class AudioManager : MonoBehaviour
  
         //Destroy the object
         Destroy(soundObj, EnemyAttackSounds[index].Clip.length);
-        }
+        
     }
  
     //Call this method to change music tracks

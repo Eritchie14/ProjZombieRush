@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     private Transform playerPos;
     private GameObject player;
     private HealthSys playerHealth;
+    public NavAgentAnim anim;
 
 
     private bool attacking; //is enemy currently attacking 
@@ -66,11 +67,14 @@ public class Enemy : MonoBehaviour
         Debug.Log(playerHealth.CurrentHealth);
         Debug.Log("hurtplayer: " + player.name);
 
-        System.Random rand = new System.Random();
+        System.Random rand = new System.Random(); 
         int index = rand.Next(AudioManager.Instance.EnemyAttackSounds.Length);
-        AudioManager.Instance.PlayAttack(index);
+        AudioManager.Instance.PlayAttack(index); // gets and plays random attack sound from audio manager array
+        anim.SetBool("Attacking", true);
+        
         
         attacking = false;
+        anim.SetBool("Attacking", false);
     }
 
     private void OnDrawGizmosSelected()

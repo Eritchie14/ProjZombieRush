@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
-//using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMovement : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [Range(0,50)] [SerializeField] float attackRange = 5, sightRange=20, timeBetweenAtacks=1;
 
@@ -13,9 +12,12 @@ public class EnemyMovement : MonoBehaviour
     private GameObject player;
     private HealthSys playerHealth;
 
+
     private bool attacking; //is enemy currently attacking 
     private bool isDead;//is the player dead
     public float attackdamage = 10;
+    private float maxHealth = 100;
+    private float currHealth;
 
     private void Start()
     {
@@ -24,6 +26,8 @@ public class EnemyMovement : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.transform.Find("HealthSystem").GetComponent<HealthSys>();
         Debug.Log("Player Position" + playerPos.position);
+        currHealth = maxHealth;
+
     }
 
     private void Update()
@@ -71,5 +75,23 @@ public class EnemyMovement : MonoBehaviour
         Gizmos.DrawWireSphere(this.transform.position, sightRange);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(this.transform.position, attackRange);
+    }
+
+    public void damageEnemy(float damage)
+    {
+        currHealth -= damage;
+        if(currHealth <= 0)
+        {
+            isDead = true;
+            Debug.Log("Killed Enemy");
+            //TODO: Apply death animation or blood explosion or something to cover enemy despawning here
+            Destroy(transform.root.gameObject);
+        }
+        
+    }
+
+    public float getHealth()
+    {
+        return currHealth;
     }
 }

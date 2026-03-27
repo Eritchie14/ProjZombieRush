@@ -1,4 +1,5 @@
 //using TMPro.EditorUtilities;
+using Ilumisoft.HealthSystem;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,7 +7,7 @@ using UnityEngine.InputSystem;
 public class GunSys : MonoBehaviour
 {
     //Gun stats
-    public int damage;
+    public int damage = 5;
     public int magazineSize, bulletsPerTap, numClips;
     int BulletsShot=0; int bulletsLeft=0;
 
@@ -80,8 +81,17 @@ public class GunSys : MonoBehaviour
         //method for activating raycast to shoot
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hitInfo, 20f))
         {
-            Debug.Log("Hit");
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward)*hitInfo.distance, Color.red);
+            //Debug.Log("Hit");
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward)*hitInfo.distance, Color.red); // red line shown on hit
+
+            if (hitInfo.collider.CompareTag("Enemy"))// detects if object hit was enemy
+            {
+                Debug.Log("Hit Enemy");
+                GameObject hitEnemy = hitInfo.collider.gameObject; //get reference of enemy hit
+                Enemy enemyScript = hitEnemy.GetComponent<Enemy>();
+                enemyScript.damageEnemy(damage);
+                Debug.Log("Enemy Health:" + enemyScript.getHealth());
+            }
 
             //particle effect on hit. to be destroyed after hit
             impact = Instantiate(ImpactParticle, hitInfo.point, quaternion.identity);
@@ -97,7 +107,7 @@ public class GunSys : MonoBehaviour
         else
         {
             Debug.Log("Miss");
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward)*20f, Color.green);
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward)*20f, Color.green); //green line shown on miss
         }
         
     }

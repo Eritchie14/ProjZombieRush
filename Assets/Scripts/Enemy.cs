@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     private bool attacking; //is enemy currently attacking 
     private bool isDead;//is the player dead
     public float attackdamage = 10;
-    private float maxHealth = 100;
+    public float maxHealth = 100;
     private float currHealth;
 
     private void Start()

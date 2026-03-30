@@ -9,6 +9,7 @@ public class GunSys : MonoBehaviour
     public int damage = 5;
     public int magazineSize, bulletsPerTap, numClips;
     int BulletsShot=0; int bulletsLeft=0;
+    public float range = 20f;
 
     //bools
     bool Shooting;
@@ -79,7 +80,7 @@ public class GunSys : MonoBehaviour
     private void Shoot()
     {
         //method for activating raycast to shoot
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hitInfo, 20f))
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hitInfo, range))
         {
             //Debug.Log("Hit");
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward)*hitInfo.distance, Color.red); // red line shown on hit
@@ -107,7 +108,7 @@ public class GunSys : MonoBehaviour
         else
         {
             Debug.Log("Miss");
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward)*20f, Color.green); //green line shown on miss
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward)*range, Color.green); //green line shown on miss
         }
         
     }

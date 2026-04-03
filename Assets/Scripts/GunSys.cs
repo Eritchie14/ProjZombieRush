@@ -112,6 +112,12 @@ public class GunSys : MonoBehaviour
         }
         
     }
+    public void getAmmo(int AmmoAmount)
+    {
+        numClips += AmmoAmount;
+        hud.updateAmmo(bulletsLeft, numClips);
+        Debug.Log("getAmmo has been triggered");
+    }
 
     private void reload()
     {

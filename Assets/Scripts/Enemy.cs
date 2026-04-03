@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
         playerPos = FindFirstObjectByType<HealthSys>().transform; //detect first object on scene that contains a healthSys compentent (script) and stores value
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.transform.Find("HealthSystem").GetComponent<HealthSys>();
-        Debug.Log("Player Position" + playerPos.position);
+        //Debug.Log("Player Position" + playerPos.position);
         currHealth = maxHealth;
 
     }
@@ -64,8 +64,8 @@ public class Enemy : MonoBehaviour
         attacking = true;
         yield return new WaitForSeconds(timeBetweenAtacks); //wait for time between attacks
         playerHealth.DamagePlayer(attackdamage);
-        Debug.Log(playerHealth.CurrentHealth);
-        Debug.Log("hurtplayer: " + player.name);
+        //Debug.Log(playerHealth.CurrentHealth);
+        //Debug.Log("hurtplayer: " + player.name);
 
         System.Random rand = new System.Random(); 
         int index = rand.Next(AudioManager.Instance.EnemyAttackSounds.Length);

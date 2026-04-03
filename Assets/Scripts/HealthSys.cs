@@ -40,6 +40,13 @@ public class HealthSys : MonoBehaviour
             }
     }
 
+    public void HealPlayer(float Health)
+    {
+        CurrentHealth += Health;
+        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, maxHealth);
+        hud.updateHealth(CurrentHealth/maxHealth);
+    }
+
     public bool isDead()
     {
         return playerDead;

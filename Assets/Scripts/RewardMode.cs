@@ -1,3 +1,4 @@
+using StarterAssets;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -5,10 +6,13 @@ public class RewardMode : MonoBehaviour
 {
    public GameObject meteor;
    public float HealthBoost;
+   public float increaseSpeed;
    public int GiveAmmoAmount;
+   public int JumpHeight;
    private GameObject Player;
    private HealthSys PlayerHealth;
    private GunSys PlayerGun;
+   private FirstPersonController PlayerMovement;
 
 
     void Awake()
@@ -43,8 +47,25 @@ public class RewardMode : MonoBehaviour
                 PlayerGun.getAmmo(GiveAmmoAmount);
                 Destroy(transform.gameObject);
                 Debug.Log("Picked up ammo");
+        }
+
+        if (CompareTag("Speed"))
+        {
+            PlayerMovement = Player.GetComponent<FirstPersonController>();
+            PlayerMovement.MoveSpeed += increaseSpeed;
+            PlayerMovement.SprintSpeed += increaseSpeed;
+            Destroy(transform.gameObject);
+            Debug.Log("Speed power up obtained");
         }    
-         //Debug.Log("hit: " + this.tag);
+
+        if (CompareTag("Jump"))
+        {
+            PlayerMovement = Player.GetComponent<FirstPersonController>();
+            PlayerMovement.JumpHeight = JumpHeight;
+            Destroy(transform.gameObject);
+            Debug.Log("Speed power up obtained");
+        }
+         Debug.Log("hit: " + this.tag);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

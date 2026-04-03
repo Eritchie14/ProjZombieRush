@@ -15,7 +15,8 @@ public class Enemy : MonoBehaviour
 
 
     private bool attacking; //is enemy currently attacking 
-    private bool isDead;//is the player dead
+    private bool isDead;//is the player dead 
+    public bool isDropper;
     public float attackdamage = 10;
     public float maxHealth = 100;
     private float currHealth;
@@ -94,6 +95,9 @@ public class Enemy : MonoBehaviour
             Debug.Log("Killed Enemy");
             //TODO: Apply death animation or blood explosion or something to cover enemy despawning here
             Destroy(transform.root.gameObject);
+            if(isDropper){
+                this.GetComponent<DropItem>().Drop();
+            }
         }
         
     }

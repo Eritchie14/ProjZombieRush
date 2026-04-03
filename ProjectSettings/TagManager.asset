@@ -9,6 +9,8 @@ TagManager:
   - Key
   - Health
   - Ammo
+  - Speed
+  - Jump
   layers:
   - Default
   - TransparentFX

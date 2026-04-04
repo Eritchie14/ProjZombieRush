@@ -9,10 +9,12 @@ public class RewardMode : MonoBehaviour
    public float increaseSpeed;
    public int GiveAmmoAmount;
    public int JumpHeight;
+   private bool hasKey;
    private GameObject Player;
    private HealthSys PlayerHealth;
    private GunSys PlayerGun;
    private FirstPersonController PlayerMovement;
+   public Hud hud;
 
 
     void Awake()
@@ -20,6 +22,7 @@ public class RewardMode : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         HealthBoost = 25f;
         GiveAmmoAmount = 3;
+        hasKey = false;
     }
     private void OnTriggerEnter(Collider other) //detects what item player has collided with
     {
@@ -64,6 +67,12 @@ public class RewardMode : MonoBehaviour
             PlayerMovement.JumpHeight = JumpHeight;
             Destroy(transform.gameObject);
             Debug.Log("Speed power up obtained");
+        }
+        if (CompareTag("Key"))
+        {
+            hasKey = true;
+            hud.getKey();
+
         }
          Debug.Log("hit: " + this.tag);
     }

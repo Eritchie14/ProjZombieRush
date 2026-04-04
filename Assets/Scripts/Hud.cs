@@ -12,6 +12,8 @@ public class Hud : MonoBehaviour
     public TextMeshProUGUI Ammo;
     public TextMeshProUGUI Healthnum;
     public Image HealthBar;
+    public Image Key;
+
     public GameObject GameOverPanel;
 
     void Start()
@@ -42,6 +44,11 @@ public class Hud : MonoBehaviour
     {
         GameOverPanel.SetActive(true);
         Time.timeScale = 0f;
+    }
+
+    public void getKey()
+    {
+        Key.color = Color.gold;
     }
 
 }

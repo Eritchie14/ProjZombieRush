@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 8271974155945620309}
   - component: {fileID: 2760123585923397766}
   - component: {fileID: 8603717737125621518}
+  - component: {fileID: 6334031368392594779}
   m_Layer: 0
   m_Name: Key
   m_TagString: Key
@@ -230,3 +231,21 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.5
   m_Center: {x: -0.1860658, y: 0.022766173, z: -0.0000012218952}
+--- !u!114 &6334031368392594779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7623196531800543872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec6d4e8c700af794ca013392535841fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RewardMode
+  meteor: {fileID: 0}
+  HealthBoost: 0
+  increaseSpeed: 0
+  GiveAmmoAmount: 0
+  JumpHeight: 0
+  hud: {fileID: 0}

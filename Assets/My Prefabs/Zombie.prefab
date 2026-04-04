@@ -488,9 +488,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3418092735585662943}
+  - component: {fileID: 3721615040159617420}
   - component: {fileID: 358843202957758665}
   - component: {fileID: 4136964040757017053}
-  - component: {fileID: 3721615040159617420}
   - component: {fileID: 5294995595937824403}
   - component: {fileID: 2463531406899848824}
   - component: {fileID: 3815974107113252112}
@@ -518,6 +518,19 @@ Transform:
   - {fileID: 8132071843241651526}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3721615040159617420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410988709098530302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c90bc43c7e8a3b4f84f8586c839030f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NavAgentAnim
+  agent: {fileID: 5294995595937824403}
 --- !u!114 &358843202957758665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,19 +572,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3721615040159617420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1410988709098530302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c90bc43c7e8a3b4f84f8586c839030f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NavAgentAnim
-  agent: {fileID: 5294995595937824403}
 --- !u!195 &5294995595937824403
 NavMeshAgent:
   m_ObjectHideFlags: 0

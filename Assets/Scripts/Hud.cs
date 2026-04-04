@@ -13,12 +13,21 @@ public class Hud : MonoBehaviour
     public TextMeshProUGUI Healthnum;
     public Image HealthBar;
     public Image Key;
+    public bool hasKey;
 
     public GameObject GameOverPanel;
 
     void Start()
     {
         GameOverPanel.SetActive(false);
+        hasKey = false;
+    }
+    void Update()
+    {
+        if (hasKey)
+        {
+            getKey();
+        }
     }
 
     public void DecreaseAmmo()

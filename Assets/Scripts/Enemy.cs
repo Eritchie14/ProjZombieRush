@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     public float attackdamage = 10;
     public float maxHealth = 100;
     private float currHealth;
+    private GameObject DroppedItem;
 
     private void Start()
     {

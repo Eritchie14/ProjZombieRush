@@ -1,0 +1,57 @@
+using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class DoorLogic : MonoBehaviour
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Hud hud;
+    public GameObject DoorUI;
+    [SerializeField] TextMeshProUGUI keyText;
+    [SerializeField] Image KeyImg;
+
+    
+    void Start()
+    {
+        DoorUI.SetActive(false);
+        keyText.enabled = false;
+        KeyImg.enabled = false;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(DoorUI.activeSelf && Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            if (hud.hasKey)
+                {
+                    SceneManager.LoadScene("Level 2");
+                }
+            else
+            {
+                keyText.enabled = true;
+                KeyImg.enabled = true;
+            }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            DoorUI.SetActive(true);            
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            keyText.enabled = false;
+            KeyImg.enabled = false;
+            DoorUI.SetActive(false);
+        }
+    }
+
+}

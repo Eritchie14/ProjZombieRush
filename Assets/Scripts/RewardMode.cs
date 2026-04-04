@@ -14,8 +14,6 @@ public class RewardMode : MonoBehaviour
    private HealthSys PlayerHealth;
    private GunSys PlayerGun;
    private FirstPersonController PlayerMovement;
-   public Hud hud;
-
 
     void Awake()
     {
@@ -71,7 +69,10 @@ public class RewardMode : MonoBehaviour
         if (CompareTag("Key"))
         {
             hasKey = true;
-            hud.getKey();
+            GameObject UI = GameObject.Find("Canvas");
+            Hud hud = UI.GetComponent<Hud>();
+            hud.hasKey =true;
+            Destroy(transform.gameObject);
 
         }
          Debug.Log("hit: " + this.tag);

@@ -100,9 +100,8 @@ public class GunSys : MonoBehaviour
             impact = null;
 
             //TODO: Needs fixing, Muzzle flash is lagging behind attack point. needs to move with the attack point 
-            //  firePoint = Instantiate(muzzleFlashParticle, attackpoint.position, quaternion.identity);
-            //  Destroy(firePoint, 0.2f);
-            //  firePoint = null;
+              firePoint = Instantiate(muzzleFlashParticle, attackpoint.position, quaternion.identity, attackpoint);
+              Destroy(firePoint, 0.2f);
 
         }
         else

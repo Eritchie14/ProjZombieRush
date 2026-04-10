@@ -45366,8 +45366,12 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2964378932031571295, guid: 31225fe937c34c34cb29d0a94defc907, type: 3}
+      propertyPath: AllSounds.Array.data[1].Volume
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2964378932031571295, guid: 31225fe937c34c34cb29d0a94defc907, type: 3}
       propertyPath: AllSounds.Array.data[2].Volume
-      value: 0.373
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3758521443951790140, guid: 31225fe937c34c34cb29d0a94defc907, type: 3}
       propertyPath: m_LocalPosition.x

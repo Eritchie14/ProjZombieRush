@@ -7,7 +7,7 @@ public class HealthSys : MonoBehaviour
     public float maxHealth;
     public float CurrentHealth;
     public float damage;
-    bool playerDead;
+     bool playerDead;
 
     //refernces
     public Hud hud;
@@ -24,6 +24,11 @@ public class HealthSys : MonoBehaviour
         if (Keyboard.current.hKey.wasPressedThisFrame)
         {
             DamagePlayer(damage);
+        }
+
+        if (playerDead)
+        {
+            hud.PlayerDeath();
         }
         
     }
@@ -50,6 +55,12 @@ public class HealthSys : MonoBehaviour
     public bool isDead()
     {
         return playerDead;
+    }
+
+    public void setDeath()
+    {
+        playerDead = true;
+        
     }
 
 }

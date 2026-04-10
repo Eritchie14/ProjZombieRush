@@ -18,6 +18,7 @@ public class RewardMode : MonoBehaviour
     void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        PlayerHealth = Player.transform.Find("HealthSystem").GetComponent<HealthSys>();
         HealthBoost = 25f;
         GiveAmmoAmount = 3;
         hasKey = false;
@@ -28,7 +29,7 @@ public class RewardMode : MonoBehaviour
         {
             if (CompareTag("Health"))
             {
-                PlayerHealth = Player.transform.Find("HealthSystem").GetComponent<HealthSys>();
+                
 
                 if(PlayerHealth.CurrentHealth == PlayerHealth.maxHealth)
                 {
@@ -69,11 +70,16 @@ public class RewardMode : MonoBehaviour
         if (CompareTag("Key"))
         {
             hasKey = true;
-            GameObject UI = GameObject.Find("Canvas");
+            GameObject UI = GameObject.Find("GameCanvas");
             Hud hud = UI.GetComponent<Hud>();
-            hud.hasKey =true;
+            hud.getKey("Yellow");
             Destroy(transform.gameObject);
 
+        }
+       
+        if (CompareTag("Death"))
+        {
+            PlayerHealth.setDeath();
         }
          Debug.Log("hit: " + this.tag);
     }

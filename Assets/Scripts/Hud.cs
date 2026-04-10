@@ -12,22 +12,25 @@ public class Hud : MonoBehaviour
     public TextMeshProUGUI Ammo;
     public TextMeshProUGUI Healthnum;
     public Image HealthBar;
-    public Image Key;
-    public bool hasKey;
+    public Image YellowKey;
+    public Image GreenKey;
+    public Image PurpleKey;
+    public bool hasYKey, hasGKey, hasPKey;
+    public int numKeys;
 
     public GameObject GameOverPanel;
 
     void Start()
     {
         GameOverPanel.SetActive(false);
-        hasKey = false;
+        hasYKey = false;
+        hasGKey = false;
+        hasPKey = false;
+        showKeys(numKeys);
     }
     void Update()
     {
-        if (hasKey)
-        {
-            getKey();
-        }
+        
     }
 
     public void DecreaseAmmo()
@@ -55,9 +58,48 @@ public class Hud : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    public void getKey()
+    public void getKey(string color)
     {
-        Key.color = Color.gold;
+        
+        switch (color)
+        {
+            case "Yellow":
+            YellowKey.color = Color.gold;
+            hasYKey = true;
+                break;
+            case "Green":
+            GreenKey.color = Color.green;
+            hasGKey = true;
+                break;
+            case "Purple":
+            PurpleKey.color = Color.purple;
+            hasPKey = true;
+                break;
+            default:
+                Debug.Log("Key not recognized");
+                break;
+        }
+    }
+
+public void showKeys(int numKeys)
+    {
+        switch(numKeys){
+            case 1:
+                YellowKey.enabled = true;
+                GreenKey.enabled = false;
+                PurpleKey.enabled = false;
+                break;
+            case 2:
+                YellowKey.enabled = true;
+                GreenKey.enabled = true;
+                PurpleKey.enabled = false;
+                break;
+            case 3:
+                YellowKey.enabled = true;
+                GreenKey.enabled = true;
+                PurpleKey.enabled = true;
+                break;
+        }
     }
 
 }

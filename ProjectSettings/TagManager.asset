@@ -11,6 +11,9 @@ TagManager:
   - Ammo
   - Speed
   - Jump
+  - Death
+  - Unlock Key
+  - GameCanvas
   layers:
   - Default
   - TransparentFX

@@ -25,7 +25,7 @@ public class DoorLogic : MonoBehaviour
     {
         if(DoorUI.activeSelf && Keyboard.current.eKey.wasPressedThisFrame)
         {
-            if (hud.hasKey)
+            if (hud.hasYKey)
                 {
                     SceneManager.LoadScene("Level 2");
                 }

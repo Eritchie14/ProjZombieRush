@@ -41,9 +41,11 @@ public class Enemy : MonoBehaviour
             thisEnemy.isStopped = true;
             attacking = false;
         }
+        //chase player if player in enemy sight range but outside attack range 
         if(distanceFromPlayer <= sightRange && distanceFromPlayer > attackRange)
         {
             attacking = false;
+            anim.SetBool("Attacking", false);
             thisEnemy.isStopped = false;
             StopAllCoroutines();
             chasePlayer();
@@ -51,7 +53,9 @@ public class Enemy : MonoBehaviour
 
         if(distanceFromPlayer <= attackRange && !attacking)
         {
-            thisEnemy.isStopped = true; // enemy stops moving to attack
+            thisEnemy.isStopped = true; // enemy stops moving to attack\
+            anim.SetBool("isWalking", false);
+            anim.SetBool("Attacking", true);
             StartCoroutine(AttackPlayer()); // enemy starts attacking player
         }
     }
@@ -59,6 +63,7 @@ public class Enemy : MonoBehaviour
     private void chasePlayer()
     {
         thisEnemy.SetDestination(playerPos.position);//sets enemy destination to player
+        anim.SetBool("isWalking", true);
     }
 
     private IEnumerator AttackPlayer()
@@ -72,7 +77,6 @@ public class Enemy : MonoBehaviour
         System.Random rand = new System.Random(); 
         int index = rand.Next(AudioManager.Instance.EnemyAttackSounds.Length);
         AudioManager.Instance.PlayAttack(index); // gets and plays random attack sound from audio manager array
-        anim.SetBool("Attacking", true);
         
         
         attacking = false;

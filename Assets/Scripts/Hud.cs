@@ -11,12 +11,14 @@ public class Hud : MonoBehaviour
 
     public TextMeshProUGUI Ammo;
     public TextMeshProUGUI Healthnum;
+    public TextMeshProUGUI ObjTxt;
     public Image HealthBar;
     public Image YellowKey;
     public Image GreenKey;
     public Image PurpleKey;
     public bool hasYKey, hasGKey, hasPKey;
     public int numKeys;
+    public int collectKeys;
 
     public GameObject GameOverPanel;
 
@@ -27,10 +29,14 @@ public class Hud : MonoBehaviour
         hasGKey = false;
         hasPKey = false;
         showKeys(numKeys);
+        collectKeys = 0;
     }
     void Update()
     {
-        
+        if(numKeys == collectKeys && numKeys > 0)
+        {
+            ObjTxt.text = "Objective:\n\nGet to the Exit";
+        }
     }
 
     public void DecreaseAmmo()
@@ -79,6 +85,7 @@ public class Hud : MonoBehaviour
                 Debug.Log("Key not recognized");
                 break;
         }
+        collectKeys ++;
     }
 
 public void showKeys(int numKeys)
@@ -98,6 +105,11 @@ public void showKeys(int numKeys)
                 YellowKey.enabled = true;
                 GreenKey.enabled = true;
                 PurpleKey.enabled = true;
+                break;
+            default:
+                YellowKey.enabled = false;
+                GreenKey.enabled = false;
+                PurpleKey.enabled = false;
                 break;
         }
     }

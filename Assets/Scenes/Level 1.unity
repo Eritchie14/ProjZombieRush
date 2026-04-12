@@ -2495,6 +2495,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1382367287873296058, guid: 4e6a020d709193c48a05aad458320e66, type: 3}
+      propertyPath: m_Speed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2405735050515989079, guid: 4e6a020d709193c48a05aad458320e66, type: 3}
       propertyPath: m_LocalPosition.x
       value: -33.256134
@@ -12971,6 +12975,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2221331049353693845, guid: d5438fe7b79d8a24bae0ccb54e81f974, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -622
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717760083218662666, guid: d5438fe7b79d8a24bae0ccb54e81f974, type: 3}
+      propertyPath: m_text
+      value: 'Objective:
+
+
+        Find all keys'
+      objectReference: {fileID: 0}
     - target: {fileID: 3358844281800669034, guid: d5438fe7b79d8a24bae0ccb54e81f974, type: 3}
       propertyPath: numKeys
       value: 1
@@ -12978,6 +12993,10 @@ PrefabInstance:
     - target: {fileID: 6735369947201841395, guid: d5438fe7b79d8a24bae0ccb54e81f974, type: 3}
       propertyPath: m_Name
       value: GameCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774347555185003641, guid: d5438fe7b79d8a24bae0ccb54e81f974, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -515
       objectReference: {fileID: 0}
     - target: {fileID: 8690145905383041323, guid: d5438fe7b79d8a24bae0ccb54e81f974, type: 3}
       propertyPath: m_Pivot.x
@@ -35728,7 +35747,7 @@ PrefabInstance:
     - target: {fileID: 7710737502661365236, guid: afd3d23fdf5178548a785a603263fd14, type: 3}
       propertyPath: hud
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 117754907}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

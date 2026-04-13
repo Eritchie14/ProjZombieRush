@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,6 +21,8 @@ public class Enemy : MonoBehaviour
     public float attackdamage = 10;
     public float maxHealth = 100;
     private float currHealth;
+    private float timer = 0f;
+    public float despawnTimer = 1f;
     private GameObject DroppedItem;
 
     private void Start()
@@ -51,12 +54,28 @@ public class Enemy : MonoBehaviour
             chasePlayer();
         }
 
-        if(distanceFromPlayer <= attackRange && !attacking)
+        if(distanceFromPlayer <= attackRange && !attacking && !isDead)
         {
             thisEnemy.isStopped = true; // enemy stops moving to attack\
             anim.SetBool("isWalking", false);
             anim.SetBool("Attacking", true);
             StartCoroutine(AttackPlayer()); // enemy starts attacking player
+        }
+        if (isDead)
+        {
+            thisEnemy.isStopped = true;
+            anim.SetBool("isDead", true);
+            
+            if(timer > 0)
+            {
+                timer -= Time.deltaTime;
+                if(timer <= 0)
+                {
+                    Destroy(transform.root.gameObject);
+                }
+            }
+            
+
         }
     }
 
@@ -97,9 +116,10 @@ public class Enemy : MonoBehaviour
         if(currHealth <= 0)
         {
             isDead = true;
+            timer = despawnTimer;
             Debug.Log("Killed Enemy");
             //TODO: Apply death animation or blood explosion or something to cover enemy despawning here
-            Destroy(transform.root.gameObject);
+            //Destroy(transform.root.gameObject);
             if(isDropper){
                 this.GetComponent<DropItem>().Drop();
             }

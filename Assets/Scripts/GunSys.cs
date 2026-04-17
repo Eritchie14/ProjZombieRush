@@ -84,7 +84,8 @@ public class GunSys : MonoBehaviour
         {
             //Debug.Log("Hit");
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward)*hitInfo.distance, Color.red); // red line shown on hit
-
+            //BossHealthSystem bossHealth = hitInfo.collider.GetComponentInParent<BossHealthSystem>();//detects if gameObject with boss health system was hit
+            
             if (hitInfo.collider.CompareTag("Enemy"))// detects if object hit was enemy
             {
                 Debug.Log("Hit Enemy");
@@ -92,6 +93,12 @@ public class GunSys : MonoBehaviour
                 Enemy enemyScript = hitEnemy.GetComponent<Enemy>();
                 enemyScript.damageEnemy(damage);
                 Debug.Log("Enemy Health:" + enemyScript.getHealth());
+            }
+            
+            if (hitInfo.collider.transform.root.CompareTag("Boss"))
+            {
+                BossHealthSystem BossHealthScript = hitInfo.collider.GetComponentInParent<BossHealthSystem>();
+                BossHealthScript.damage(damage);
             }
 
             //particle effect on hit. to be destroyed after hit

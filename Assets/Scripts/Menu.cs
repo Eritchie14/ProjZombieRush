@@ -4,10 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    public string ScenetoLoad = "Level1";
+    public string ScenetoLoad = "Level 1";
     public void playGame()
     {
-        SceneManager.LoadScene(ScenetoLoad);
+        SceneManager.GetActiveScene();;
         Time.timeScale = 1;
     }
 
@@ -21,7 +21,7 @@ public class Menu : MonoBehaviour
     }
     public void restartGame()
     {
-        SceneManager.GetActiveScene();
+        SceneManager.LoadScene("Level 1");
         Time.timeScale = 1;
     }
 }

@@ -21,10 +21,13 @@ public class Hud : MonoBehaviour
     public int collectKeys;
 
     public GameObject GameOverPanel;
+    public GameObject WinPanel;
 
     void Start()
     {
         GameOverPanel.SetActive(false);
+        WinPanel.SetActive(false);
+
         hasYKey = false;
         hasGKey = false;
         hasPKey = false;
@@ -62,6 +65,10 @@ public class Hud : MonoBehaviour
     {
         GameOverPanel.SetActive(true);
         Time.timeScale = 0f;
+    }
+    public void PlayerWin()
+    {
+        WinPanel.SetActive(true);
     }
 
     public void getKey(string color)

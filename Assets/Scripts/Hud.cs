@@ -13,6 +13,7 @@ public class Hud : MonoBehaviour
     public TextMeshProUGUI Healthnum;
     public TextMeshProUGUI ObjTxt;
     public Image HealthBar;
+    public Image BrogmarHealthBar;
     public Image YellowKey;
     public Image GreenKey;
     public Image PurpleKey;
@@ -59,6 +60,10 @@ public class Hud : MonoBehaviour
     public void updateHealth(float Health)
     {
         HealthBar.fillAmount = Health;
+    }
+    public void updateBrogmarHealth(float Health)
+    {
+        BrogmarHealthBar.fillAmount = Health;
     }
 
     public void PlayerDeath()

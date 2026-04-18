@@ -50,6 +50,7 @@ public class BossHealthSystem : MonoBehaviour
     {
         currHealth -= hitPoints; 
         currHealth = Mathf.Clamp(currHealth, 0, maxHealth);
+        GameCanvasHud.updateBrogmarHealth(currHealth/maxHealth);
         if(currHealth <= 0)
         {
             isDead = true;

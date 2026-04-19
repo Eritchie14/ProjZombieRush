@@ -9,6 +9,7 @@ public class RewardMode : MonoBehaviour
    public float increaseSpeed;
    public int GiveAmmoAmount;
    public int JumpHeight;
+   public int damageBoost;
    private bool hasKey;
    private GameObject Player;
    private HealthSys PlayerHealth;
@@ -20,8 +21,10 @@ public class RewardMode : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         PlayerHealth = Player.transform.Find("HealthSystem").GetComponent<HealthSys>();
         HealthBoost = 25f;
-        GiveAmmoAmount = 3;
+        GiveAmmoAmount = 60;
         hasKey = false;
+        PlayerGun = Player.transform.Find("PlayerCameraRoot").transform.Find("Main Camera").GetComponent<GunSys>();
+
     }
     private void OnTriggerEnter(Collider other) //detects what item player has collided with
     {
@@ -34,6 +37,7 @@ public class RewardMode : MonoBehaviour
                 if(PlayerHealth.CurrentHealth == PlayerHealth.maxHealth)
                 {
                     Debug.Log("At full Health");
+                    Destroy(transform.gameObject);
                 }
                 else{
 
@@ -45,7 +49,7 @@ public class RewardMode : MonoBehaviour
         }
         if (CompareTag("Ammo"))
         {
-            PlayerGun = Player.transform.Find("PlayerCameraRoot").transform.Find("Main Camera").GetComponent<GunSys>();
+            //PlayerGun = Player.transform.Find("PlayerCameraRoot").transform.Find("Main Camera").GetComponent<GunSys>();
                 PlayerGun.getAmmo(GiveAmmoAmount);
                 Destroy(transform.gameObject);
                 Debug.Log("Picked up ammo");
@@ -62,8 +66,7 @@ public class RewardMode : MonoBehaviour
 
         if (CompareTag("Jump"))
         {
-            PlayerMovement = Player.GetComponent<FirstPersonController>();
-            PlayerMovement.JumpHeight = JumpHeight;
+            PlayerGun.damage += 15;
             Destroy(transform.gameObject);
             Debug.Log("Speed power up obtained");
         }

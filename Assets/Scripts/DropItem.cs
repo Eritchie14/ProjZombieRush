@@ -6,6 +6,10 @@ public class DropItem : MonoBehaviour
     public GameObject ItemToDrop;
     public void Drop()
     {
+        if(ItemToDrop == null)
+        {
+            return;
+        }
         if(ItemToDrop != null){
         Instantiate(ItemToDrop, transform.position + new Vector3(0f, 1f, 0f), quaternion.identity);
         

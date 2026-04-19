@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class ZombieSpawner : MonoBehaviour
+public class Spawns : MonoBehaviour
 {
 
-    public GameObject ZombiePrefab;
+    public GameObject Zombie1, Zombie2, Zombie3, Zombie4, Zombie5;
     private BoxCollider SpawnZone;
     [Range(0,50)] [SerializeField] float SpawnRange = 5;
     public int PatrolSize = 5;
@@ -50,7 +50,8 @@ public class ZombieSpawner : MonoBehaviour
         
         for (int i = 0; i < PatrolSize; ++i)
         {
-            Instantiate(ZombiePrefab, randomSpawn(SpawnZone), Quaternion.identity);
+            
+            SpawnZombies();
         }
     }
 
@@ -71,5 +72,17 @@ public class ZombieSpawner : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(this.transform.position, SpawnRange);
     }
-
+    public void SpawnZombies()
+    {
+        if(Zombie1 != null){
+            Instantiate(Zombie1, randomSpawn(SpawnZone), Quaternion.identity);}
+        if(Zombie2 != null){
+            Instantiate(Zombie2, randomSpawn(SpawnZone), Quaternion.identity);}
+        if(Zombie3 != null){
+            Instantiate(Zombie3, randomSpawn(SpawnZone), Quaternion.identity);}
+        if(Zombie4 != null){
+            Instantiate(Zombie4, randomSpawn(SpawnZone), Quaternion.identity);}
+        if(Zombie5 != null){
+            Instantiate(Zombie5, randomSpawn(SpawnZone), Quaternion.identity);}
+    }
 }

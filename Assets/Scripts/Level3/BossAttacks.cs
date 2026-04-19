@@ -20,6 +20,8 @@ public class BossAttacks : MonoBehaviour
     public float riseSpeed = 25f;
     public float stopHeight = 2f;
     public float destroyAfter = 5f;
+    private float attackTimier;
+    public bool isAttacking;
 
     public NavAgentAnim anim;
     private Vector3 startPoint;
@@ -41,11 +43,13 @@ public class BossAttacks : MonoBehaviour
         }
     }
 
-    IEnumerator stompAttack()
+    public IEnumerator stompAttack()
     {
-        anim.SetBool("isAttacking", true);
+        //anim.SetBool("isAttacking", true);
+
 
         //Vector3 localOffset = new Vector3(0f, 0f, 0f);
+        isAttacking = true;
 
     for (int i = 0; i < count; i++)
     {
@@ -61,7 +65,8 @@ public class BossAttacks : MonoBehaviour
         yield return new WaitForSeconds(delayBetweenSpawns);
     }
 
-    anim.SetBool("isAttacking", false);
+    //anim.SetBool("isAttacking", false);
+    isAttacking = false;
         yield break;
     }
 

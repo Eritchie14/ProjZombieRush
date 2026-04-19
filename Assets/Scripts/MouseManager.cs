@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class BossMovement : MonoBehaviour
+public class MouseManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public NavAgentAnim anim;
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -14,6 +14,4 @@ public class BossMovement : MonoBehaviour
     {
         
     }
-
-
 }

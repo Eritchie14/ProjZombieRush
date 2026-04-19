@@ -9,6 +9,7 @@ public class DoorLogic : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public Hud hud;
     public GameObject DoorUI;
+    public GameObject particles;
     [SerializeField] TextMeshProUGUI keyText;
     [SerializeField] Image KeyImg;
 
@@ -18,6 +19,7 @@ public class DoorLogic : MonoBehaviour
         DoorUI.SetActive(false);
         keyText.enabled = false;
         KeyImg.enabled = false;
+        particles.SetActive(false);
     }
 
     // Update is called once per frame
@@ -34,6 +36,10 @@ public class DoorLogic : MonoBehaviour
                 keyText.enabled = true;
                 KeyImg.enabled = true;
             }
+        }
+        if (hud.allKeysCollected)
+        {
+            particles.SetActive(true);
         }
     }
 

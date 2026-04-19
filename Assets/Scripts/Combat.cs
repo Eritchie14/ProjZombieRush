@@ -10,7 +10,7 @@ public class Combat : MonoBehaviour
     private float CoolDowntimer = 0f;
     public float AttackCoolDown = 3f;
     public float stompAttackTimer = 0f;
-    [Range(0,50)] [SerializeField] float attackRange = 5;
+    [Range(0,50)] [SerializeField] float attackRange = 5, stompRange = 3;
     void Start()
     {
         playerPos = FindFirstObjectByType<HealthSys>().transform;
@@ -58,8 +58,8 @@ public class Combat : MonoBehaviour
 
         private void OnDrawGizmosSelected()
     {
-        //Gizmos.color = Color.cyan;
-        //Gizmos.DrawWireSphere(this.transform.position, sightRange);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(this.transform.position, stompRange);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(this.transform.position, attackRange);
     }

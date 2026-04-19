@@ -14,19 +14,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2405735050515989079, guid: 4e6a020d709193c48a05aad458320e66, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -38.17
+      value: 4.820585
       objectReference: {fileID: 0}
     - target: {fileID: 2405735050515989079, guid: 4e6a020d709193c48a05aad458320e66, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.000000059604645
+      value: 0.00000059537706
       objectReference: {fileID: 0}
     - target: {fileID: 2405735050515989079, guid: 4e6a020d709193c48a05aad458320e66, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.33
+      value: -7.1104774
       objectReference: {fileID: 0}
     - target: {fileID: 2405735050515989079, guid: 4e6a020d709193c48a05aad458320e66, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.89604914
+      value: -0.07018461
       objectReference: {fileID: 0}
     - target: {fileID: 2405735050515989079, guid: 4e6a020d709193c48a05aad458320e66, type: 3}
       propertyPath: m_LocalRotation.x
@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2405735050515989079, guid: 4e6a020d709193c48a05aad458320e66, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.4439549
+      value: -0.9975341
       objectReference: {fileID: 0}
     - target: {fileID: 2405735050515989079, guid: 4e6a020d709193c48a05aad458320e66, type: 3}
       propertyPath: m_LocalRotation.z
@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2405735050515989079, guid: 4e6a020d709193c48a05aad458320e66, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -307.287
+      value: -188.049
       objectReference: {fileID: 0}
     - target: {fileID: 2405735050515989079, guid: 4e6a020d709193c48a05aad458320e66, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4084933800440929675, guid: 4e6a020d709193c48a05aad458320e66, type: 3}
       propertyPath: m_Name
-      value: GreenZombie
+      value: DamageZombie
       objectReference: {fileID: 0}
     - target: {fileID: 4346061052329014710, guid: 4e6a020d709193c48a05aad458320e66, type: 3}
       propertyPath: isDropper
@@ -75,7 +75,7 @@ PrefabInstance:
     - target: {fileID: 7711096883676697118, guid: 4e6a020d709193c48a05aad458320e66, type: 3}
       propertyPath: ItemToDrop
       value: 
-      objectReference: {fileID: 2204310153320063150, guid: 59fc7d2ea18913548a4ec0beb4d42be7, type: 3}
+      objectReference: {fileID: 4404258455559981916, guid: c0304e85b0da42a449217157aa1e5f27, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -105,8 +105,8 @@ GameObject:
   - component: {fileID: 4669290238016462874}
   - component: {fileID: 176391463976815833}
   m_Layer: 0
-  m_Name: Ammo Drop
-  m_TagString: Ammo
+  m_Name: Damagepower
+  m_TagString: Jump
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,14 +119,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4404258455559981916}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.41934913, z: 0, w: 0.90782505}
+  m_LocalRotation: {x: 0.41336387, y: -0.3121867, z: -0.5994618, w: 0.61017656}
   m_LocalPosition: {x: -2.2473805, y: 0.578, z: -11.226271}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9128330930750921366}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -49.587, z: 0}
+  m_LocalEulerAnglesHint: {x: 7.479, y: -62.14, z: -93.495}
 --- !u!33 &6230242844566455906
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 54bc70fa3eeb02c4fa8e421f7c120993, type: 2}
+  - {fileID: 2100000, guid: 85740485192fd6b409a279622080577d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -225,9 +225,9 @@ MonoBehaviour:
   meteor: {fileID: 0}
   HealthBoost: 0
   increaseSpeed: 0
-  GiveAmmoAmount: 3
+  GiveAmmoAmount: 0
   JumpHeight: 0
-  damageBoost: 0
+  damageBoost: 10
 --- !u!135 &176391463976815833
 SphereCollider:
   m_ObjectHideFlags: 0

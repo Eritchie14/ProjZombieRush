@@ -11,6 +11,7 @@ public class BossHealthSystem : MonoBehaviour
     private NavMeshAgent thisEnemy;
     private GameObject GameCanvas;
     private Hud GameCanvasHud;
+    private float timer = 0f;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,14 +27,15 @@ public class BossHealthSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.lKey.wasPressedThisFrame)
-        {
-            //anim.SetBool("isWalking", true);
-        }
-        if (Keyboard.current.kKey.wasPressedThisFrame)
-        {
-            damage(1000);
-        }
+        //TESTING
+        // if (Keyboard.current.lKey.wasPressedThisFrame)
+        // {
+        //     //anim.SetBool("isWalking", true);
+        // }
+        // if (Keyboard.current.kKey.wasPressedThisFrame)
+        // {
+        //     damage(1000);
+        // }
         if(isDead)
         {
             //death animation here
@@ -42,7 +44,12 @@ public class BossHealthSystem : MonoBehaviour
             thisEnemy.updatePosition = false;
             thisEnemy.updateRotation = false;
             anim.SetBool("isDead", true);
-            GameCanvasHud.PlayerWin();
+            if(timer < 3f)
+            {
+                timer += Time.deltaTime;
+            }
+            else{
+            GameCanvasHud.PlayerWin();}
         }
     }
 

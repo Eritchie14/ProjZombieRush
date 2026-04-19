@@ -44,6 +44,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockSpike
       objectReference: {fileID: 0}
+    - target: {fileID: 2542475326318273391, guid: 7db0c752e1865a5439a7be1c3d295c2f, type: 3}
+      propertyPath: m_Size.y
+      value: 0.35204783
+      objectReference: {fileID: 0}
+    - target: {fileID: 2542475326318273391, guid: 7db0c752e1865a5439a7be1c3d295c2f, type: 3}
+      propertyPath: m_Center.y
+      value: 0.20715521
+      objectReference: {fileID: 0}
     - target: {fileID: 6912335862547442573, guid: 7db0c752e1865a5439a7be1c3d295c2f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5260887

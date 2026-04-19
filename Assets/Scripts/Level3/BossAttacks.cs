@@ -36,11 +36,11 @@ public class BossAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.tKey.wasPressedThisFrame)
-        {
-            StartCoroutine(stompAttack());
+        // if (Keyboard.current.tKey.wasPressedThisFrame)
+        // {
+        //     StartCoroutine(stompAttack());
 
-        }
+        // }
     }
 
     public IEnumerator stompAttack()

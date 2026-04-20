@@ -107,6 +107,9 @@ PrefabInstance:
       addedObject: {fileID: 4346061052329014710}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eab7f87e30fc98d4581405a6b852d943, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 7711096883676697118}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eab7f87e30fc98d4581405a6b852d943, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 4739561983781473928}
   m_SourcePrefab: {fileID: 100100000, guid: eab7f87e30fc98d4581405a6b852d943, type: 3}
 --- !u!1 &5850287045151383460 stripped
@@ -165,8 +168,23 @@ MonoBehaviour:
   sightRange: 19.6
   timeBetweenAtacks: 1
   anim: {fileID: 9070828389222889491}
+  isDropper: 0
   attackdamage: 10
   maxHealth: 100
+  despawnTimer: 3
+--- !u!114 &7711096883676697118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5850287045151383460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa217df7f909cb84a94bc0b01cd4f482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DropItem
+  ItemToDrop: {fileID: 0}
 --- !u!136 &4739561983781473928
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -1,5 +1,7 @@
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Hud : MonoBehaviour
@@ -12,15 +14,18 @@ public class Hud : MonoBehaviour
     public TextMeshProUGUI Ammo;
     public TextMeshProUGUI Healthnum;
     public TextMeshProUGUI ObjTxt;
+    public TextMeshProUGUI esc;
     public Image HealthBar;
     public Image BrogmarHealthBar;
     public Image YellowKey;
     public Image GreenKey;
     public Image PurpleKey;
-    public bool hasYKey, hasGKey, hasPKey;
+    public bool hasYKey, hasGKey, hasPKey, isPaused;
     public int numKeys;
     public int collectKeys;
+    public bool allKeysCollected;
 
+    public GameObject Pausepanel;
     public GameObject GameOverPanel;
     public GameObject WinPanel;
 
@@ -28,6 +33,8 @@ public class Hud : MonoBehaviour
     {
         GameOverPanel.SetActive(false);
         WinPanel.SetActive(false);
+        Pausepanel.SetActive(false);
+        bool allKeysCollected = false;
 
         hasYKey = false;
         hasGKey = false;
@@ -40,6 +47,11 @@ public class Hud : MonoBehaviour
         if(numKeys == collectKeys && numKeys > 0)
         {
             ObjTxt.text = "Objective:\n\nGet to the Exit";
+            allKeysCollected = true;
+        }
+        if (Keyboard.current.escapeKey.wasPressedThisFrame && !(GameOverPanel.activeSelf || WinPanel.activeSelf))
+        {
+            pause();
         }
     }
 
@@ -69,11 +81,32 @@ public class Hud : MonoBehaviour
     public void PlayerDeath()
     {
         GameOverPanel.SetActive(true);
+        esc.enabled = false;
         Time.timeScale = 0f;
+    }
+    public void Reset()
+    {
+        Time.timeScale = 1f;
     }
     public void PlayerWin()
     {
+        esc.enabled = false;
         WinPanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+    public void pause()
+    {
+        Pausepanel.SetActive(true);
+        esc.enabled = false;
+        isPaused = true;
+        Time.timeScale = 0f;
+    }
+    public void resume()
+    {
+        Pausepanel.SetActive(false);
+        Time.timeScale = 1f;
+        esc.enabled = true;
+        isPaused = false;
     }
 
     public void getKey(string color)

@@ -10,6 +10,8 @@ public class DoorManager : MonoBehaviour
     private bool isClosing = false;
 
     private float timer = 0f;
+    public GameObject particles;
+    public Hud GameHud;
 
     private Quaternion closedRotation;
     private Quaternion openRotation;
@@ -18,6 +20,10 @@ public class DoorManager : MonoBehaviour
     {
         closedRotation = transform.rotation;
         openRotation = Quaternion.Euler(0, openAngle, 0) * closedRotation;
+        if(particles != null)
+        {
+            particles.SetActive(false);
+        }
     }
 
     void Update()
@@ -55,6 +61,11 @@ public class DoorManager : MonoBehaviour
             {
                 isClosing = false;
             }
+        }
+        if(particles != null && GameHud != null)
+        {
+            if(GameHud.allKeysCollected){
+            particles.SetActive(true);}
         }
     }
 

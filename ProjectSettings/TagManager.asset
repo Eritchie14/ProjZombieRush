@@ -15,6 +15,7 @@ TagManager:
   - Unlock Key
   - GameCanvas
   - Boss
+  - RockSpike
   layers:
   - Default
   - TransparentFX

@@ -141,5 +141,12 @@ public class AudioManager : MonoBehaviour
         _musicSource.Stop();
     }
 }
+public void SetMusicVolume(float volume)
+{
+    if (_musicSource != null)
+    {
+        _musicSource.volume = volume;
+    }
+}
     
 }

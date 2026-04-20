@@ -1,12 +1,11 @@
 using UnityEngine;
 
-public class BossMovement : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public NavAgentAnim anim;
     void Start()
     {
-        
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
@@ -14,6 +13,4 @@ public class BossMovement : MonoBehaviour
     {
         
     }
-
-
 }

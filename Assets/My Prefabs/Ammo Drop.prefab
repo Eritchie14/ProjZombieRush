@@ -227,6 +227,7 @@ MonoBehaviour:
   increaseSpeed: 0
   GiveAmmoAmount: 3
   JumpHeight: 0
+  damageBoost: 0
 --- !u!135 &176391463976815833
 SphereCollider:
   m_ObjectHideFlags: 0

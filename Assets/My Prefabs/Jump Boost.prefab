@@ -157,7 +157,8 @@ MonoBehaviour:
   HealthBoost: 0
   increaseSpeed: 0
   GiveAmmoAmount: 0
-  JumpHeight: 3
+  JumpHeight: 0
+  damageBoost: 10
 --- !u!1001 &4818619108839805722
 PrefabInstance:
   m_ObjectHideFlags: 0

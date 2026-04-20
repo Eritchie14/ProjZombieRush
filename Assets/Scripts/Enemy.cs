@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     public float maxHealth = 100;
     private float currHealth;
     private float timer = 0f;
-    public float despawnTimer = 1f;
+    public float despawnTimer = 3f;
     private GameObject DroppedItem;
 
     private void Start()
@@ -116,6 +116,7 @@ public class Enemy : MonoBehaviour
         if(currHealth <= 0)
         {
             isDead = true;
+            GetComponent<Collider>().enabled = false;
             timer = despawnTimer;
             Debug.Log("Killed Enemy");
             //TODO: Apply death animation or blood explosion or something to cover enemy despawning here

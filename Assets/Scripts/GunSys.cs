@@ -7,8 +7,8 @@ public class GunSys : MonoBehaviour
 {
     //Gun stats
     public int damage = 5;
-    public int magazineSize, bulletsPerTap, numClips;
-    int BulletsShot=0; int bulletsLeft=0;
+    public int magazineSize, totalBullets;
+    public int BulletsShot=0; public int bulletsLeft=0;
     public float range = 20f;
 
     //bools
@@ -29,23 +29,14 @@ public class GunSys : MonoBehaviour
     void Start()
     {
         bulletsLeft = magazineSize;
-        hud.updateAmmo(bulletsLeft, numClips);
+        hud.updateAmmo(bulletsLeft, totalBullets);
     }
     void Update()
     {
         //press R to reload
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
-            if(numClips > 0 && bulletsLeft != magazineSize){
             reload();
-            bulletsLeft = magazineSize;
-            numClips -= 1;
-            hud.updateAmmo(bulletsLeft, numClips);
-            }
-            else
-            {
-                Debug.Log("no more ammo!");
-            }
         }
 
         //checks to see if player has shot all of their bullets. If so, gun will not shoot until player reloads 
@@ -59,7 +50,7 @@ public class GunSys : MonoBehaviour
         //checks to see if player should be shooting and how fast to shoot
         if (Shooting && Time.time > nextFireTime)
         {
-            if(BulletsShot >= magazineSize)
+            if(bulletsLeft == 0)
             {
                 Debug.Log("reload!");
             }
@@ -70,7 +61,7 @@ public class GunSys : MonoBehaviour
                 BulletsShot += 1;
                 bulletsLeft -= 1;
                 //hud update
-                hud.updateAmmo(bulletsLeft, numClips);
+                hud.updateAmmo(bulletsLeft, totalBullets);
             }
         }
         
@@ -107,7 +98,7 @@ public class GunSys : MonoBehaviour
             impact = null;
 
             //TODO: Needs fixing, Muzzle flash is lagging behind attack point. needs to move with the attack point 
-              firePoint = Instantiate(muzzleFlashParticle, attackpoint.position, quaternion.identity, attackpoint);
+              firePoint = Instantiate(muzzleFlashParticle, attackpoint.position, attackpoint.rotation, attackpoint);
               Destroy(firePoint, 0.2f);
 
         }
@@ -120,13 +111,30 @@ public class GunSys : MonoBehaviour
     }
     public void getAmmo(int AmmoAmount)
     {
-        numClips += AmmoAmount;
-        hud.updateAmmo(bulletsLeft, numClips);
+        totalBullets += AmmoAmount;
+        hud.updateAmmo(bulletsLeft, totalBullets);
         Debug.Log("getAmmo has been triggered");
     }
 
     private void reload()
     {
-        BulletsShot = 0;
+        if(BulletsShot <= totalBullets){
+            
+            totalBullets -= BulletsShot;
+            bulletsLeft = magazineSize;
+            hud.updateAmmo(bulletsLeft, totalBullets);
+            BulletsShot = 0;
+            }
+            else if (totalBullets < BulletsShot){
+                bulletsLeft += totalBullets;
+                totalBullets = 0;
+                hud.updateAmmo(bulletsLeft, totalBullets);
+            }
+            else
+            {
+                Debug.Log("no more ammo!");
+            }
+
+
     }
 }
